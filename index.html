@@ -189,6 +189,27 @@ function onKeyDown(event){
 }
 
 
+<!-- for mobiles -->
+
+var randomidx;
+var arr=['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+
+
+document.body.addEventListener("touchstart",f);
+function f(event){
+	var maxpoint=new Point(view.size.width, view.size.height);
+	var randomPoint=Point.random();
+	var finalPoint=randomPoint*maxpoint;
+	var myCircle = new Path.Circle(finalPoint,500);
+	myCircle.fillColor = "orange";
+	randomidx=Math.floor(Math.random() * arr.length);
+	myCircle.fillColor = keyData[arr[randomidx]].color;
+    keyData[arr[randomidx]].sound.play();
+	document.querySelector("h2").style.display="none";
+	circle.push(myCircle);
+    
+}
+
 <!-- for Animation -->
 
 function onFrame(event) {
